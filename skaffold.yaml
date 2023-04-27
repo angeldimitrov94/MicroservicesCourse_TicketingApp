@@ -1,0 +1,60 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
+build:
+  # local:
+  #   push: false
+  googleCloudBuild:
+    projectId: third-pulsar-384623
+  artifacts:
+    - image: us.gcr.io/third-pulsar-384623/ticketing-auth
+      context: ticketing-auth
+      docker:
+        dockerfile: Dockerfile
+      sync: 
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+    # - image: a2xd94/comments
+    #   context: comments
+    #   docker:
+    #     dockerfile: Dockerfile
+    #   sync: 
+    #     manual:
+    #       - src: '*.js'
+    #         dest: .
+    # - image: a2xd94/event-bus
+    #   context: event-bus
+    #   docker:
+    #     dockerfile: Dockerfile
+    #   sync: 
+    #     manual:
+    #       - src: '*.js'
+    #         dest: .
+    # - image: a2xd94/moderation
+    #   context: moderation
+    #   docker:
+    #     dockerfile: Dockerfile
+    #   sync: 
+    #     manual:
+    #       - src: '*.js'
+    #         dest: .
+    # - image: a2xd94/posts
+    #   context: posts
+    #   docker:
+    #     dockerfile: Dockerfile
+    #   sync: 
+    #     manual:
+    #       - src: '*.js'
+    #         dest: .
+    # - image: a2xd94/query
+    #   context: query
+    #   docker:
+    #     dockerfile: Dockerfile
+    #   sync: 
+    #     manual:
+    #       - src: '*.js'
+    #         dest: .
