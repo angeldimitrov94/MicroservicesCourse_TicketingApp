@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: ticketing-auth
-          image: us.gcr.io/third-pulsar-384623/ticketing-auth
+          image: a2xd94/ticketing-auth
 ---
 apiVersion: v1
 kind: Service

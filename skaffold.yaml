@@ -5,12 +5,13 @@ deploy:
     manifests:
       - ./infra/k8s/*
 build:
-  # local:
-  #   push: false
-  googleCloudBuild:
-    projectId: third-pulsar-384623
+  local:
+    push: false
+  # googleCloudBuild:
+  #   projectId: third-pulsar-384623
   artifacts:
-    - image: us.gcr.io/third-pulsar-384623/ticketing-auth
+    # - image: us.gcr.io/third-pulsar-384623/ticketing-auth
+    - image: a2xd94/ticketing-auth
       context: ticketing-auth
       docker:
         dockerfile: Dockerfile
